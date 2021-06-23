@@ -1,0 +1,33 @@
+<div class="backgroundstyle">
+  <div class="container-fluid login fontcolor " style="margin-top: 8%;">
+    <div class="col-sm-12 col-md-7 col-lg-3 mx-auto">
+        <div class="card card-signin" style="border: none!important; background-color: transparent;">
+          <div class="card-body" >
+            <img src="../../../../../assets/Images/Logo.png" class="mx-auto d-block" width="200" height="150" alt="loginlogo">
+            <h5 class="card-title text-center"> Reinicio de Contraseña </h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                <label for="inputEmail"> RFC </label>
+                <input type="text" id="inputrfc"
+                       class="form-control"
+                       placeholder="RFC"
+                       [(ngModel)]="rfc" required autofocus autocomplete="on" [ngModelOptions]="{standalone: true}" >
+              </div>
+
+              <div class="form-label-group">
+                <label for="inputPassword" style="margin-top: 10px">Contraseña</label>
+                <input type="password"
+                       id="inputPassword"
+                       class="form-control"
+                       placeholder="Contraseña"
+                       [(ngModel)]="password" required autofocus autocomplete="on" [ngModelOptions]="{standalone: true}">
+              </div>
+              <hr class="my-4">
+              <button class="btn btn-lg btn-danger btn-block text-uppercase" type="submit" (click)="resetpass()"> Enviar Reinicio de Contraseña</button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>

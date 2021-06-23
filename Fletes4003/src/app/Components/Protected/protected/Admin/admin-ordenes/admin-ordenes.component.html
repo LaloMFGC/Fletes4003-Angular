@@ -1,0 +1,135 @@
+<div *ngIf="userstatus === false ">
+
+  <h1 style="text-align: center;"> Antes de realizar algún movimiento </h1>
+
+  <img src="./../../../../../../assets/Images/userdata.jpg" alt="userdata" class="userdata" >
+
+  <h2 style="text-align: center;"> Registra tu información en el apartado <br> Mi Perfil </h2>
+
+</div>
+
+    <div class="container-fluid" *ngIf="userstatus !== true">  
+      <section>
+        <div>
+            <h1 style="text-align: center; margin-bottom: 5%;"> Pedidos De Fletes </h1>
+        </div>
+      </section>
+    </div>
+
+    <div>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="tipo-producto"> Tipo de Producto</label>
+          <select class="form-control inputs" [(ngModel)]="busqueda" name="type">
+              <option> Por dia </option>
+              <option> Por mes </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <form *ngIf="busqueda === 'Por dia' ">
+
+      <div class="row">
+        
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <input class="form-control" style="padding: 10px; margin-right: 10px;" type="date" value="" [(ngModel)]="fecha" name="day">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <button type="submit" class="btn btn-danger marginbutton " style="margin-right: 20%;" (click)="mostrardia()"> Buscar </button>
+        </div>
+
+      </div>
+
+      <div class="row" style="margin-top: 10px;">
+        
+        <div class="col-lg-12">
+
+          <button type="submit" class="btn btn-danger my-1" style="margin-right: 3%;" (click)="exportdiaref()"> Exportar Ref a PDF </button>
+
+          <button type="submit" class="btn btn-danger my-1" style="margin-right: 3%;" (click)="exportdiaasf()"> Exportar Asf a PDF </button>
+
+          <button type="submit" class="btn btn-danger my-1" style="margin-right: 3%;" (click)="exportday()"> Exportar a Excel </button>  
+
+        </div>
+      </div>
+      
+    </form>
+
+    <form *ngIf="busqueda === 'Por mes' ">   
+     
+
+      <div class="row">
+        
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <input class="form-control" style="padding: 10px; margin-right: 10px;" type="month" value="" [(ngModel)]="fecha" name="month">
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <button type="submit" class="btn btn-danger marginbutton" style="margin-right: 20%;" (click)="mostrarmes()"> Buscar </button>
+        </div>
+
+      </div>
+
+      <div class="row" style="margin-top: 10px;" >
+        
+        <div class="col-lg-12">
+
+          <button type="submit" class="btn btn-danger my-1" style="margin-right: 3%;" (click)="exportmesref()"> Exportar Ref a PDF </button>
+  
+          <button type="submit" class="btn btn-danger my-1" style="margin-right: 3%;" (click)="exportmesasf()"> Exportar Asf a PDF </button>
+        
+          <button type="submit" class="btn btn-danger my-1" (click)="exportmes()"> Exportar a Excel </button>
+
+        </div>
+      </div>
+
+      
+    </form>
+
+
+
+    <div class="container-fluid" style="padding: 0, 0;">
+          <div class="row">
+              <div class="col-lg-12 col-md-10 " id="htmlData">
+                  <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-center"> Folio </th>
+                          <th class="text-right"> RFC</th>
+                          <th class="text-right"> Producto </th>
+                          <th class="text-right"> Cantidad </th>
+                          <th class="text-right"> Fecha de Entrega </th>
+                          <th class="text-right"> Hora de Entrega </th>
+                          <th class="text-right"> # de Unidad </th> 
+                          <th class="text-right"> # Carta Porte</th>
+                          <th class="text-right"> Chofer </th>
+                          <th class="text-right"> Estado del Envio</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of ordenes">
+                          <td class="text-center"> {{item.TICKETID}} </td>
+                          <td class="text-right"> {{item.RFC_ID}}</td>
+                          <td class="text-right"> {{item.PROVPRODUCT }}</td>
+                          <td class="text-right"> {{item.PROVCANTIDAD}}</td>
+                          <td class="text-right"> {{item.PROVENTREGACLIENTDATE}} </td>
+                          <td class="text-right"> {{item.PROVENTREGACLIENTTIME}} </td>
+                          <td class="text-right"> {{item.PROVUNIDAD}} </td>
+                          <td class="text-right"> {{item.PROVCP}} </td>
+                          <td class="text-right"> {{item.PROVCHOFER}} </td>
+                          <td *ngIf="item.PROVSTATUS === 'En Proceso' " class="text-right myColor1"> {{item.PROVSTATUS}}</td>  
+                          <td *ngIf="item.PROVSTATUS === 'Asignado' " class="text-right myColor2"> {{item.PROVSTATUS}}</td>  
+                          <td *ngIf="item.PROVSTATUS === 'Pendiente por Facturar' " class="text-right myColor3"> {{item.PROVSTATUS}}</td>  
+                          <td *ngIf="item.PROVSTATUS === 'Facturado' " class="text-right myColor4"> {{item.PROVSTATUS}}</td>
+                          <td *ngIf=" (item.PROVSTATUS != 'Asignado') && (item.PROVSTATUS != 'En Proceso')&& (item.PROVSTATUS != 'Pendiente por Facturar') && (item.PROVSTATUS != 'Facturado') " class="text-right cancelado"> {{item.PROVSTATUS}}</td>
+                        </tr>
+                      </tbody>
+                  </table>
+                  </div>
+              </div>
+          </div>
+      </div>

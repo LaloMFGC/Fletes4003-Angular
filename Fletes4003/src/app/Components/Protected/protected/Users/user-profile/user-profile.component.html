@@ -1,0 +1,99 @@
+<div class="container-fluid">
+
+    <div>
+        <h1 style="text-align: center; margin-bottom: 5%;"> Campos Obligatorios </h1>
+    </div>
+
+    <form
+        [formGroup]="profile"
+        (ngSubmit)="saveprofile()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputname">Nombre </label>
+                <input type="text" class="form-control inputs" formControlName="nombre">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputrazon"> Razón Social</label>
+                <input type="text" class="form-control inputs" formControlName="razonsocial">
+              </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-3">
+                <label for="inputname"> Dirección </label>
+                <input type="text" class="form-control inputs" formControlName="address">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="inputlastname"> # Int / Ext </label>
+                <input type="tel" class="form-control inputs" formControlName="numaddress">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="inputname"> Colonia </label>
+                <input type="text" class="form-control inputs" formControlName="colonia">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="entrega-direccion"> Ciudad </label>
+                <input type="text" class="form-control inputs" formControlName="city">
+            </div>
+
+        </div>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-4">
+            <label > Estado </label>
+            <select class="form-control inputs" formControlName="state">
+                <option> Aguascalientes </option>
+                <option> Baja California </option>
+                <option> Baja California Sur </option>
+                <option> Campeche </option>
+                <option> Chiapas </option>
+                <option> Chihuahua </option>
+                <option> Coahuila </option>
+                <option> Colima </option>
+                <option> Distrito Federal </option>
+                <option> Durango </option>
+                <option> Estado de México </option>
+                <option> Guanajuato </option>
+                <option> Guerrero </option>
+                <option> Hidalgo </option>
+                <option> Jalisco </option>
+                <option> Michoacán </option>
+                <option> Morelos </option>
+                <option> Nayarit </option>
+                <option> Nuevo León </option>
+                <option> Oaxaca </option>
+                <option> Puebla </option>
+                <option> Querétaro </option>
+                <option> Quintana Roo </option>
+                <option> San Luis Potosí </option>
+                <option> Sinaloa </option>
+                <option> Tabasco </option>
+                <option> Tamaulipas </option>
+                <option> Tlaxcala </option>
+                <option> Veracruz </option>
+                <option> Yucatán </option>
+                <option> Zacatecas </option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="inputlastname"> Codigo Postal </label>
+            <input type="text" class="form-control inputs" formControlName="zip">
+        </div>
+
+
+        <div class="form-group col-md-4">
+            <label for="inputlastname"> Teléfono </label>
+            <input type="text" class="form-control inputs" formControlName="phone">
+        </div>
+
+      </div>
+
+      <button type="submit" [disabled]="profile.invalid" class="btn btn-danger col-md-6 offset-md-3 inputs"> Guardar Datos </button>
+    </form>
+  </div>

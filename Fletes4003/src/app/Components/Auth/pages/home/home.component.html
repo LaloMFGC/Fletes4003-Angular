@@ -1,0 +1,150 @@
+<header class="brand">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+      <img src="../../../../../assets/Images/Logo.png" class="logo" alt="logo">
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse navbar-nav ml-auto"  id="navbarNavDropdown">
+        <ul class="navbar-nav sm-mx-auto offset-md-6">
+          <li class="nav-item active ">
+            <a button class="btn btn-outline-danger fontcolor btn-sm btn-block"  href="/auth/home#data"> ¿Quienés somos? </a> 
+          </li>
+          <li class="nav-item dropdown ">
+            <button class="btn btn-sm btn-outline-danger  fontcolor btn-sm btn-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> Servicios </button> 
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item " href="/auth/home#park"> Parque Vehicular </a>
+              <a class="dropdown-item " href="/auth/home#park"> Transporte de Producto Refinado </a>
+              <a class="dropdown-item " href="/auth/home#park"> División Asfaltos </a>
+              <a class="dropdown-item " href="/auth/home#rastreo"> Rastreo y Seguridad </a>
+              <a class="dropdown-item " href="/auth/home#sellado"> Sellado electrónico </a>
+              <a class="dropdown-item " href="/auth/home#ventajas"> Ventajas Competitivas y <br> Estandares de Calidad </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a button class="btn btn-sm btn-outline-danger fontcolor btn-sm btn-block" href="/auth/home#contacto"> Contactanos </a> 
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 offset-md-1">
+          <button type="button" class="btn btn-danger btn-sm btn-block fontcolor" [routerLink]="['/auth/login']" routerLinkActive="router-link-active" > Iniciar Sesión </button>  
+        </form>
+      </div>
+    </nav>
+</header>
+
+<h1 class="titles featurette-heading" style="margin-top: 6%;" id="data" name="data" > En Fletes 4003 te ofrecemos seguridad</h1>
+
+<div class="container marketing" style="margin-top: 5%" id="park" name="park">
+    <div class="row">
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="./../../../../../assets/Images/Camiones.jpg" width="140" height="140">
+          <h2> Conoce nuestro Parque Vehicular </h2>
+          <p class="lead" style="text-align: center;" >
+            Tenemos disponibles unidades de reciente modelo,
+            las cuales son sometidas a un programa de mantenimientos preventivos
+            y correctivos para asegurar el buen funcionamiento y confiabilidad de
+            las mismas para la garantizar la entrega de su producto en tiempo y forma.
+          </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="../../../../../assets/Images/Camiones 2.jpg" alt="refinado" width="140" height="140">
+          <h2 class="titles featurette-heading"> Transporte de Producto Refinado </h2>
+          <p class="lead" style="text-align: center;">
+            Autotanques para transporte de producto refinado con capacidades de 15,000 y 20,000  litros.
+            Unidades tipo Full para volumen de 27,000 y 54 000 litros .
+            Que cumplen con los estándares de PEMEX y sistemas extras de seguridad.
+          </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="../../../../../assets/Images/asfaltos.jpg" alt="asfaltos" width="140" height="140">
+          <h2 class="titles featurette-heading"> División Asfaltos </h2>
+          <p  class="lead" style="text-align: center;">
+            Contamos también con el servicio de transporte de productos 
+            <br>
+            derivados del petróleo tales como:
+            <br>
+            <span> <b>* Combustóleo</b> </span>
+            <br>
+            <span> <b>* Asfalto</b> </span>
+            <br>
+            <span> <b>* Emulsión</b> </span>
+            <br>
+            <br>
+            Unidades:
+            <br>
+            <span> <b> * Unidades Sencillas con capacidades de 37,000 a 40,000 litros</b> </span>
+            <br>
+            <span> <b> * Unidades Tipo Full con capacidades de 54,000 a 60,000 litros.</b> </span>
+          </p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="titles featurette-heading" id="rastreo" name="rastreo"> Rastreo y Seguridad </h2>
+            <p class="lead" style="text-align: center;" >
+                Para nuestra empresa su confianza es lo más valioso, por eso contamos con sistemas de rastreo y seguridad 
+                <br>
+                monitoreados las 24 horas que le garantizan la entrega total de su carga.
+                <br>
+                <span> <b> Sistemas de rastreo satelital: </b> </span> 
+                Contamos sistemas de rastreo satelital, ofreciendo  un sistema sofisticado, seguro, rápido y confiable que le
+                permiten monitorear personalmente su carga durante todo su trayecto.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="../../../../../assets/Images/rastreo.jpg" alt="rastreo">
+        </div>
+    </div>
+
+
+
+
+
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="titles featurette-heading" id="sellado" name="sellado"> Sellado electrónico </h2>
+            <p class="lead" style="text-align: center;">
+                Todas nuestras unidades de refinado cuentan con un moderno sistema de sellado electrónico
+                tipo Token, que indica el momento en el que se abren o cierran las compuertas de carga y
+                descarga, así, se evita cualquier faltante de su producto.
+            </p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img class="featurette-image img-fluid mx-auto"  src="../../../../../assets/Images/Sellado.png" alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="titles featurette-heading" id="ventajas" name="ventajas"> Ventajas Competitivas y Estandares de Calidad </h2>
+            <p  class="lead" style="text-align: center;">
+                Sellado electrónico: -Evita el “robo hormiga” u “ordeña" de producto en auto-tanques.
+                -Es un candado o sello electrónico para monitorear los puntos de acceso a la carga.
+                -Se registra hora, fecha y posición de las aperturas. -Sistema 100% seguro, sin riesgo de chispa,
+                 sistema ‘’0 voltios, 0 amperaje, 0 riesgo’’.
+                -Con el registro electrónico ofrecemos el viaje seguro de su carga.
+                -Sensores magnéticos anti-violación (calibrados). -Housing anti-explosión.
+                <br>
+                <br id="contacto" name="contacto">
+
+                -Fletes 4003 S.A de C.V. Cuenta con un proceso de Sistema de Gestión de Calidad enfocado en el cumplimiento
+                 de los requisitos establecidos en la normativa ISO 9001-2015 para la gestión de la calidad en nuestros desarrollos
+                 y servicios. Contamos con Permisos de la Comisión Reguladora de Energía, CRE. Contamos con Permisos de la Secretaria
+                 de Comunicaciones y Transportes SCT.
+                 Calibraciones Autorizadas y Actualizadas por medio de PEMEX en nuestros equipos de entrega.
+
+            </p>
+        </div>
+        <div class="col-md-5">
+           <img class="featurette-image img-fluid mx-auto" style="margin-top: 5%;" src="./../../../../../assets/Images/CRE FB.png" alt="asfaltos">
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

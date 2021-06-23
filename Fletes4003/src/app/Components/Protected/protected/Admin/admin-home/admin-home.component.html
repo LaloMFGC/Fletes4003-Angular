@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <h1 class="mt-4" style="text-align: center;"> Bienvenido a Fletes4003 {{ _user.username }}  </h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"> * Para cualquier aclaración comunicarse con el área de desarrollo </li>
+    </ol>
+    <div class="row">
+        <img src="./../../../../../../assets/Images/Logo.png" class="logouser">
+    </div>
+   
+    <div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i> Últimos Pedidos </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                          <th class="text-center"> Folio </th>
+                          <th class="text-right"> RFC</th>
+                          <th class="text-right"> Producto </th>
+                          <th class="text-right"> Cantidad </th>
+                          <th class="text-right"> Fecha de Entrega </th>
+                          <th class="text-right"> Hora de Entrega </th>
+                          <th class="text-right"> # de Unidad </th> 
+                          <th class="text-right"> # Carta Porte</th>
+                          <th class="text-right"> Chofer </th>
+                          <th class="text-right"> Estado del Envio</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr *ngFor="let item of ordenes">
+                            <td class="text-center"> {{item.TICKETID}} </td>
+                            <td class="text-right"> {{item.RFC_ID}}</td>
+                            <td class="text-right"> {{item.PROVPRODUCT }}</td>
+                            <td class="text-right"> {{item.PROVCANTIDAD}}</td>
+                            <td class="text-right"> {{item.PROVENTREGACLIENTDATE}} </td>
+                            <td class="text-right"> {{item.PROVENTREGACLIENTTIME}} </td>
+                            <td class="text-right"> {{item.PROVUNIDAD}} </td>
+                            <td class="text-right"> {{item.PROVCP}} </td>
+                            <td class="text-right"> {{item.PROVCHOFER}} </td>
+                            <td *ngIf="item.PROVSTATUS === 'En Proceso' " class="text-right myColor1"> {{item.PROVSTATUS}}</td>  
+                            <td *ngIf="item.PROVSTATUS === 'Asignado' " class="text-right myColor2"> {{item.PROVSTATUS}}</td>  
+                            <td *ngIf="item.PROVSTATUS === 'Pendiente por Facturar' " class="text-right myColor3"> {{item.PROVSTATUS}}</td>  
+                            <td *ngIf="item.PROVSTATUS === 'Facturado' " class="text-right myColor4"> {{item.PROVSTATUS}}</td>
+                            <td *ngIf=" (item.PROVSTATUS != 'Asignado') && (item.PROVSTATUS != 'En Proceso')&& (item.PROVSTATUS != 'Pendiente por Facturar') && (item.PROVSTATUS != 'Facturado') " class="text-right cancelado"> {{item.PROVSTATUS}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

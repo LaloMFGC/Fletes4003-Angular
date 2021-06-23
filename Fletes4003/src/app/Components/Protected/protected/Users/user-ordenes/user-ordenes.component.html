@@ -1,0 +1,62 @@
+<div *ngIf="userstatus === false ">
+
+  <h1 style="text-align: center;"> Antes de realizar algún movimiento </h1>
+
+  <img src="./../../../../../../assets/Images/userdata.jpg" alt="userdata" class="userdata" >
+
+  <h2 style="text-align: center;"> Registra tu información en el apartado <br> Mi Perfil </h2>
+
+</div>
+
+<div *ngIf="userstatus !== false">
+    
+  <form class="form-inline">
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> Estado del Pedido </label>
+    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" [(ngModel)]="opcion" name="Status">
+      <option value="En Proceso"> En Proceso </option>
+      <option value="Asignado"> Asignado </option>
+      <option value="Pendiente por Facturar"> Pendiente por Facturar </option>
+      <option value="Facturado"> Facturado </option>
+    </select>
+
+    <button type="submit" class="btn btn-danger my-1" (click)="mostrar(opcion)"> Buscar </button>
+  </form>
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th class="text-center"> Folio </th>
+                          <th class="text-right"> RFC</th>
+                          <th class="text-right"> Producto </th>
+                          <th class="text-right"> Cantidad </th>
+                          <th class="text-right"> Fecha de Entrega </th>
+                          <th class="text-right"> Hora de Entrega </th>
+                          <th class="text-right"> # de Unidad </th> 
+                          <th class="text-right"> Estado del Envio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of ordenes">
+                          <td class="text-center"> {{item.TICKETID}} </td>
+                          <td class="text-right"> {{item.RFC_ID}}</td>
+                          <td class="text-right"> {{item.PROVPRODUCT }}</td>
+                          <td class="text-right"> {{item.PROVCANTIDAD}}</td>
+                          <td class="text-right"> {{item.PROVENTREGADATE}} </td>
+                          <td class="text-right"> {{item.PROVENTREGATIME}} </td>
+                          <td class="text-right"> {{item.PROVUNIDAD}} </td>
+                          <td *ngIf="item.PROVSTATUS === 'En Proceso' " class="text-right myColor1"> {{item.PROVSTATUS}}</td>  
+                          <td *ngIf="item.PROVSTATUS === 'Asignado' " class="text-right myColor2"> {{item.PROVSTATUS}}</td>  
+                          <td *ngIf="item.PROVSTATUS === 'Pendiente por Facturar' " class="text-right myColor3"> {{item.PROVSTATUS}}</td>  
+                          <td *ngIf="item.PROVSTATUS === 'Facturado' " class="text-right myColor4"> {{item.PROVSTATUS}}</td>
+                          <td *ngIf=" (item.PROVSTATUS != 'Asignado') && (item.PROVSTATUS != 'En Proceso')&& (item.PROVSTATUS != 'Pendiente por Facturar') && (item.PROVSTATUS != 'Facturado') " class="text-right cancelado"> {{item.PROVSTATUS}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

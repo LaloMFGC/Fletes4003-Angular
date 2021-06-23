@@ -1,0 +1,51 @@
+<div *ngIf="userstatus === false ">
+
+  <h1 style="text-align: center;"> Antes de realizar algún movimiento </h1>
+
+  <img src="./../../../../../../assets/Images/userdata.jpg" alt="userdata" class="userdata" >
+
+  <h2 style="text-align: center;"> Registra tu información en el apartado <br> Mi Perfil </h2>
+
+</div>
+
+<div class="container" style="margin-top: 3%;" *ngIf="userstatus !== false">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+        <div class="card signin my-2">
+          <div class="card-body ">
+            <a class="navbar-brand" style="margin-left: 35%; margin-right: 40%; margin-bottom: 5%;">
+              <img src="../../../assets/Images/logo.jpg" width="120" height="70" alt="logo">
+            </a>
+            <h5 class="card-title text-center"> Registro de Usuarios </h5>
+            <form class="form-signin"
+                  (ngSubmit)="signin()"
+                  [formGroup]="registerform">
+
+              <div class="form-label-group">
+                <label for="inputEmail">Correo Electronico</label>
+                <input type="email" id="inputEmail" class="form-control inputs" placeholder="Correo Electrónico" formControlName="email"  required autofocus>
+              </div>
+
+              <div class="form-label-group">
+                <label for="inputRFC"> RFC </label>
+                <input type="text" id="inputRFC" class="form-control inputs" placeholder="RFC" formControlName="rfc" required autofocus>
+              </div>
+              
+              <div class="form-label-group">
+                <label for="inputUsername"> Nombre de Usuario </label>
+                <input type="text" id="inputUsername" class="form-control inputs" placeholder="Username" formControlName="username" required autofocus>
+              </div>
+              
+              <div class="form-label-group">
+                <label for="inputPassword">Contraseña</label>
+                <input type="password" id="inputPassword" class="form-control inputs" placeholder="Contraseña" formControlName="password" required autofocus>
+              </div>             
+
+              <hr class="my-4">
+              <button class="btn btn-lg btn-danger btn-block text-uppercase" style="margin-bottom: 40px;" type="submit" >Registrar Usuario</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

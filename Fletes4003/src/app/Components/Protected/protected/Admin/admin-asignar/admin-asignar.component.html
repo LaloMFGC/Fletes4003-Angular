@@ -1,0 +1,439 @@
+<div *ngIf="userstatus === false ">
+
+  <h1 style="text-align: center;"> Antes de realizar algún movimiento </h1>
+
+  <img src="./../../../../../../assets/Images/userdata.jpg" alt="userdata" class="userdata" >
+
+  <h2 style="text-align: center;"> Registra tu información en el apartado <br> Mi Perfil </h2>
+
+</div>
+
+<div class="container-fluid" *ngIf="userstatus !== false">
+
+  <section>
+    <div>
+      <h1 style="text-align: center; margin-bottom: 5%;"> Asignar Pedidos </h1>
+    </div>
+  </section>
+      
+  <div class="form-group col-lg-3 col-sm-12">
+    <label > Tipo de Producto </label>
+    <select class="form-control inputs" style="margin-bottom: 10%;" [(ngModel)]="asignprod" [ngModelOptions]="{standalone: true}">
+      <option> Refinado </option>
+      <option> Asfalto  </option>
+    </select>
+  </div> 
+
+  <form [formGroup]="refinform" 
+        *ngIf=" asignprod === 'Refinado'"
+        (ngSubmit)="refasign()"
+  > 
+
+    <div class="form-row">  
+      <div class="form-group col-md-3" >
+        <label for="inputname"> # Folio </label>
+        <input type="text" class="form-control inputs" formControlName="folio">
+      </div>   
+              
+      <div class="form-group col-md-3">
+        <label > Empresa </label>
+        <select class="form-control inputs" formControlName="empresa">
+          <option> Fletes </option>
+          <option> Treco  </option>
+          <option> Transasfaltica </option>
+        </select>
+      </div>     
+  
+      <div class="form-group col-md-3">
+        <label > Status del Envio </label>
+        <select class="form-control inputs" formControlName="status">
+          <option> En Proceso </option>
+          <option> Asignado </option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="entrega-fecha"> Fecha de Entrega </label>
+        <input class="form-control inputs" type="date"  value="" formControlName="entregadate">
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputname"> # Unidad  </label>
+        <input type="text" class="form-control inputs" formControlName="unidad">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputname"> Usuario que asigno el registro </label>
+        <input type="text" class="form-control inputs" formControlName="adminuser">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputlastname"> Nombre del Conductor </label>
+        <input type="text" class="form-control inputs" formControlName="chofer">
+      </div>      
+      <div class="form-group col-md-3">
+        <label for="inputname"> # Carta Porte  </label>
+        <input type="text" class="form-control inputs" formControlName="cartaporte">
+      </div>
+    </div>   
+        
+    <button type="submit" class="btn btn-danger col-md-6 offset-md-3" [disabled]="refinform.invalid" style="margin-bottom: 10%;" > Asignar Pedido </button>
+         
+  </form>
+  
+  <form [formGroup]="asfaltform"
+        *ngIf=" asignprod === 'Asfalto'"
+        (ngSubmit)="asfaltasign()"
+  >
+  
+    <div class="form-row">         
+        <div class="form-group col-md-4" >
+          <label for="inputname"> # Folio </label>
+          <input type="text" class="form-control inputs" formControlName="folio" required>
+        </div>   
+                
+        <div class="form-group col-md-4">
+          <label > Empresa </label>
+          <select class="form-control inputs" formControlName="empresa" required>
+            <option> Fletes </option>
+            <option> Treco  </option>
+            <option> Transasfaltica </option>
+          </select>
+        </div>    
+              
+        <div class="form-group col-md-4" >
+          <label > Status del Envio </label>
+          <select class="form-control inputs" formControlName="status" required>
+            <option> En Proceso </option>
+            <option> Asignado </option>
+          </select>
+        </div>
+
+    </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputname"> # Unidad  </label>
+        <input type="text" class="form-control inputs" formControlName="unidad" required>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputname"> Usuario que asigno el registro </label>
+        <input type="text" class="form-control inputs" formControlName="adminuser" required>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputlastname"> Nombre del Conductor </label>
+        <input type="text" class="form-control inputs" formControlName="chofer" required>
+      </div>      
+      <div class="form-group col-md-3">
+        <label for="inputname"> # Carta Porte  </label>
+        <input type="text" class="form-control inputs" formControlName="cartaporte" required>
+      </div>
+    </div>   
+        
+    <button type="submit" class="btn btn-danger col-md-6 offset-md-3" [disabled]="asfaltform.invalid" style="margin-bottom: 10%;" > Asignar Pedido </button>
+         
+  </form>
+
+  <hr style="height: 2px;">
+  
+  <div>
+    <h1 style="text-align: center; margin-bottom: 5%;"> Actualizar Status del Pedido </h1>
+  </div>
+  
+  <div>
+    <div class="col-lg-3 col-sm-12">
+      <label for="entrega-hora"> Tipo de Producto </label>
+      <select class="form-control inputs" style="margin-bottom: 10%" [(ngModel)]="producttype" name="ProductType">
+        <option> Refinado </option>
+        <option> Asfalto </option>
+      </select>
+    </div> 
+  </div>
+  
+
+  <form 
+        *ngIf="producttype === 'Refinado' "
+        [formGroup]="refinupd"
+        (ngSubmit)="refupdate()"
+  >
+  
+    <div class="form-row">       
+      <div class="col-lg-2 col-sm-12" >
+        <label for="entrega-hora"> # de Folio </label>
+        <input type="text" class="form-control inputs" placeholder="# Folio" formControlName="folio">
+      </div>
+    
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> Status del Pedido </label>
+        <select class="form-control inputs" placeholder="Status del Pedido" formControlName="status">
+          <option> En Proceso </option>
+          <option> Asignado </option>
+          <option> Pendiente por Facturar </option>
+        </select>
+      </div> 
+    
+      <div class="form-group col-lg-2 col-sm-12">
+        <label for="entrega-hora">Hora de llegada PEMEX</label>
+        <input class="form-control inputs inputs" type="time" value="" formControlName="pemexllegadatime">
+      </div>  
+            
+      <div class="form-group col-lg-2 col-sm-12">
+        <label for="entrega-fecha"> Fecha de llegada PEMEX </label>
+        <input class="form-control inputs" type="date"  value="" formControlName="pemexllegadadate">
+      </div>
+    
+      <div class="form-group col-lg-2 col-sm-12">
+        <label for="entrega-hora">Hora de Salida PEMEX</label>
+        <input class="form-control inputs inputs" type="time" value="" formControlName="pemexsalidatime">
+      </div>  
+    
+      <div class="form-group col-lg-2 col-sm-12">
+        <label for="entrega-fecha"> Fecha de Salida PEMEX</label>
+        <input class="form-control inputs" type="date"  value="" formControlName="pemexsalidadate">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="entrega-hora">Hora de Entrega Cliente </label>
+        <input class="form-control inputs inputs" type="time" value="" formControlName="entregaclienttime">
+      </div>  
+            
+      <div class="form-group col-md-3">
+        <label for="entrega-fecha"> Fecha de Entrega Cliente </label>
+        <input class="form-control inputs" type="date"  value="" formControlName="entregaclientdate">
+      </div>
+    
+      <div class="form-group col-md-3">
+        <label for="entrega-hora">Hora de Salida </label>
+        <input class="form-control inputs inputs" type="time" value="" formControlName="salidaclienttime">
+      </div>  
+
+      <div class="form-group col-md-3">
+        <label for="entrega-fecha"> Fecha de Salida </label>
+        <input class="form-control inputs" type="date"  value="" formControlName="salidaclientdate">
+      </div>
+    </div>
+    
+    <div class="form-row">          
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> Geocerca </label>
+        <input type="text" class="form-control inputs" placeholder="Geocerca" formControlName="geocerca">
+      </div>
+    
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> KM. Total </label>
+        <input type="text" class="form-control inputs" placeholder="Kilometraje" formControlName="kilometraje">
+      </div>
+  
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> Sello </label>
+        <input type="text" class="form-control inputs" placeholder="Sello" formControlName="sello">
+      </div>
+    
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> Costo </label>
+        <input type="text" class="form-control inputs" placeholder="Costo" formControlName="costo">
+      </div>
+    
+      <div class="form-group col-lg-4 col-sm-12">
+        <label for="entrega-hora"> Observaciones </label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" 
+                  rows="5" placeholder="Escribe Aqui" formControlName="observaciones"></textarea>
+      </div>
+    
+    </div>
+    
+    <div class="col">
+      <button type="submit" class="btn btn-danger col-md-3 offset-md-4" [disabled]="refinupd.invalid"> Actualizar Status </button>
+    </div>
+    
+  </form>
+  
+
+  <form 
+        *ngIf="producttype === 'Asfalto' "
+        (ngSubmit)="asfaltupdate()"
+        [formGroup]="asfaltupd"
+  >
+  
+    <div class="form-row">
+      <div class="col-lg-4 col-sm-12">
+        <label for="entrega-hora"> # de Folio </label>
+        <input type="text" class="form-control inputs" placeholder="# Folio" formControlName="folio">
+      </div>      
+
+      <div class="col-lg-4 col-sm-12">
+        <label for="entrega-fecha"> Fecha de llegada PEMEX </label>
+        <input class="form-control inputs" type="date"  value="" formControlName="pemexllegadadate">
+      </div>
+
+      <div class="col-lg-4 col-sm-12">
+        <label for="entrega-fecha"> Fecha de Salida PEMEX</label>
+        <input class="form-control inputs" type="date" value="" formControlName="pemexsalidadate">
+      </div>
+  
+    </div>
+
+    <div class="form-row">         
+      
+      <div class="col-lg-4 col-sm-12">
+        <label for="entrega-fecha"> Fecha de Entrega </label>
+        <input class="form-control inputs" type="date"  value="" formControlName="entregaclientdate">
+      </div>
+      
+      <div class="col-lg-4 col-sm-12">
+        <label for="entrega-hora"> Status del Pedido </label>
+        <select class="form-control inputs" placeholder="Status del Pedido" formControlName="status">
+          <option> En Proceso </option>
+          <option> Asignado </option>
+          <option> Pendiente por Facturar </option>
+        </select>
+      </div>
+
+      <div class="col-lg-4 col-sm-12">
+        <label for="entrega-hora"> KM. Total </label>
+        <input type="text" class="form-control inputs" placeholder="Kilometraje" formControlName="kilometraje">
+      </div>
+  
+    </div>
+             
+    <div class="form-row">
+      
+  
+      <div class="col-lg-3 col-sm-12">
+        <label for="entrega-hora"> Tanque </label>
+        <input type="text" class="form-control inputs" placeholder="Tanque" formControlName="tanque">
+      </div>
+              
+      <div class="col-lg-3 col-sm-12">
+        <label for="entrega-hora"> Gastos del Viaje </label>
+        <input type="text" class="form-control inputs" placeholder="Gasto del Viaje" formControlName="gastos">
+      </div>   
+    
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> Costo </label>
+        <input type="text" class=" form-control inputs" placeholder="Costo" formControlName="costo">
+      </div>
+    
+      <div class="form-group col-lg-4 col-sm-12">
+        <label for="entrega-hora"> Observaciones </label>
+        <textarea class="form-control" id="exampleFormControlTextarea1"
+                  rows="5" placeholder="Escribe Aqui" formControlName="observaciones"></textarea>
+      </div>
+    
+    </div>
+    
+    <div class="col">
+      <button type="submit" class="btn btn-danger col-md-3 offset-md-4" [disabled]="asfaltupd.invalid"> Actualizar Status </button>
+    </div>
+    
+  </form>
+
+  <hr style="height: 2px;"> 
+  
+  <div>
+    <h1 style="text-align: center; margin-bottom: 5%;"> Cancelar Pedidos </h1>
+  </div>
+  
+  <form>
+    <div class="form-row">
+  
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> # Folio </label>
+        <input type="text" class="form-control inputs" placeholder="# Folio" [(ngModel)]="foliocancel" name="foliocancel">
+      </div>
+    
+      <div class="col-lg-2 col-sm-12">
+        <label for="entrega-hora"> Status del pedido </label>
+        <select class="form-control inputs" placeholder="Status del Pedido" [(ngModel)]="statuscancel" name="statuscancel">
+          <option> Cancelado </option>
+        </select>
+      </div> 
+    
+      <div class="form-group col-lg-4 col-sm-12">
+        <label for="entrega-hora"> Motivo de Cancelación </label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]="cancel" name="cancel" placeholder="Escribe el motivo de la cancelación"></textarea>
+      </div>
+              
+      <div class="col-lg-3 offset-md-1 col-sm-4" style="margin-top: 30px">
+        <button type="submit" class="btn btn-danger" (click)="cancelticket()"> Cancelar Pedido </button>
+      </div> 
+
+    </div>
+  
+  </form>
+
+  <hr style="height: 2px;">  
+
+  <form>
+    <div class="form-row">    
+      <div class="col-lg-3 col-sm-4">
+        <label for="entrega-hora"> Status del Pedido </label>
+        <select class="form-control inputs" placeholder="Status del Pedido" [(ngModel)]="findstatus" name="findstatus">
+          <option value="En Proceso"> En Proceso </option>
+          <option value="Asignado"> Asignado </option>
+          <option value="Pendiente por Facturar"> Pendiente por Facturar </option>
+          <option value="Facturado"> Facturado </option>
+          <option value="Cancelado"> Cancelado </option>
+        </select>
+      </div> 
+      
+      <div class="col-lg-3 col-md-1 col-sm-4">
+        <label for="entrega-hora"> Empresa </label>
+        <select class="form-control inputs" placeholder="Empresa" [(ngModel)]="findemp" name="empresa" >
+          <option> Fletes </option>
+          <option> Treco  </option>
+          <option> Transasfaltica </option>
+        </select>
+      </div> 
+              
+      <div class="col-lg-3 col-md-3 col-sm-4 offset-md-1" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-danger col-4 botonenviar" (click)="mostrar()" style="margin-top: 4%;"> Buscar </button>
+      </div>
+        
+    </div>
+  </form>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="text-center"> Folio </th>
+                <th class="text-right"> RFC </th>
+                <th class="text-right"> Producto </th>
+                <th class="text-right"> Cantidad </th>
+                <th class="text-right"> Fecha de Entrega </th>
+                <th class="text-right"> # de Unidad </th> 
+                <th class="text-right"> Carta Porte </th> 
+                <th class="text-right"> Chofer </th> 
+                <th class="text-right"> Estado del Envio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of ordenes">
+                <td class="text-center"> {{ item.TICKETID }} </td>
+                <td class="text-right"> {{ item.RFC_ID }}</td>
+                <td class="text-right"> {{ item.PROVPRODUCT }}</td>
+                <td class="text-right"> {{ item.PROVCANTIDAD }}</td>
+                <td class="text-right"> {{ item.PROVENTREGACLIENTDATE }} </td>
+                <td class="text-right"> {{ item.PROVUNIDAD }} </td>
+                <td class="text-right"> {{ item.PROVCARTAPORTE }} </td>
+                <td class="text-right"> {{ item.PROVCHOFER }} </td>
+                <td *ngIf="item.PROVSTATUS === 'En Proceso' " class="text-right myColor1"> {{item.PROVSTATUS}}</td>  
+                <td *ngIf="item.PROVSTATUS === 'Asignado' " class="text-right myColor2"> {{item.PROVSTATUS}}</td>  
+                <td *ngIf="item.PROVSTATUS === 'Pendiente por Facturar' " class="text-right myColor3"> {{item.PROVSTATUS}}</td>  
+                <td *ngIf="item.PROVSTATUS === 'Facturado' " class="text-right myColor4"> {{item.PROVSTATUS}}</td>
+                <td *ngIf=" (item.PROVSTATUS != 'Asignado') && (item.PROVSTATUS != 'En Proceso')&& (item.PROVSTATUS != 'Pendiente por Facturar') && (item.PROVSTATUS != 'Facturado') " class="text-right cancelado"> {{item.PROVSTATUS}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

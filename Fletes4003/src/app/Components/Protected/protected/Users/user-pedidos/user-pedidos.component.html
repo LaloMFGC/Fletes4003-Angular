@@ -1,0 +1,165 @@
+
+<div *ngIf="userstatus === false ">
+
+  <h1 style="text-align: center;"> Antes de realizar algún movimiento </h1>
+
+  <img src="./../../../../../../assets/Images/userdata.jpg" alt="userdata" class="userdata" >
+
+  <h2 style="text-align: center;"> Registra tu información en el apartado <br> Mi Perfil </h2>
+
+</div>
+
+<div class="container-fluid" *ngIf="userstatus !== false">
+      
+    <section>
+      <div>
+          <h1 style="text-align: center; margin-bottom: 5%;"> Realiza tu pedido con nosotros</h1>
+      </div>
+    </section>
+  
+  
+    <div class="form-group col-md-3">
+      <label for="tipo-producto"> Tipo de Producto</label>
+      <select class="form-control inputs" value="" [(ngModel)]="producttype" >
+          <option> Refinado </option>
+          <option> Asfalto </option>
+      </select>
+    </div>
+  
+    <form 
+          *ngIf="producttype === 'Refinado'"
+          [formGroup]="refinform"
+          (ngSubmit)="refinpedido()">
+      
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="input-carga-direccion"> Dirección de Carga</label>
+            <input type="text" class="form-control inputs" formControlName="cargaaddress" >
+        </div>
+      
+        <div class="form-group col-md-6">
+          <label for="entrega-direccion"> Dirección de Entrega</label>
+          <input type="text" class="form-control inputs" formControlName="entregaaddress">
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="input-hora-carga">Hora de Carga </label>
+          <select class="form-control inputs" value="" formControlName="cargatime">
+              <option> Turno 1 </option>
+              <option> Turno 2 </option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="date-carga-input"> Fecha de Carga </label>
+          <input class="form-control inputs" type="date" value="" formControlName="cargadate" >
+        </div>
+      
+        <div class="form-group col-md-4">
+          <label for="entrega-fecha"> Fecha de Entrega </label>
+          <input class="form-control inputs" type="date"  value="" formControlName="entregadate">
+        </div>
+      </div>
+
+
+      <div class="form-row">
+       
+        <div class="form-group col-md-6">
+          <label for="producto">Producto </label>
+          <select class="form-control inputs" value="" formControlName="product">
+              <option> Gasolina 87 Octanos  </option>
+              <option> Gasolina 91 Octanos </option>
+              <option> Diesel </option>
+          </select>
+        </div>
+
+        <div  class="form-group col-md-6">
+          <label for="inputCity"> Cantidad (Litros) </label>
+          <select class="form-control inputs" value="" formControlName="cantidad">
+            <option> 10000  </option>
+            <option> 15000 </option>
+            <option> 20000  </option>
+            <option> Full </option>
+          </select>
+        </div>
+     
+      </div>      
+      <button type="submit" [disabled]="refinform.invalid" class="btn btn-danger col-md-6 offset-md-3" > Realizar Pedido</button>
+    </form>
+
+    
+    <form 
+          [formGroup]="asfaltform"
+          (ngSubmit)="asfaltpedido()"
+          *ngIf="producttype === 'Asfalto' ">
+      
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="input-carga-direccion"> Dirección de Carga</label>
+            <input type="text" class="form-control inputs" formControlName="cargaaddress" >
+        </div>
+      
+        <div class="form-group col-md-6">
+          <label for="entrega-direccion"> Dirección de Entrega</label>
+          <input type="text" class="form-control inputs" formControlName="entregaaddress">
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="input-hora-carga">Hora de Carga </label>
+          <select class="form-control inputs" value="" formControlName="cargatime">
+              <option> Turno 1 </option>
+              <option> Turno 2 </option>
+          </select>
+        </div>
+
+        <div class="form-group col-6">
+          <label for="date-carga-input"> Fecha de Carga </label>
+          <input class="form-control inputs" type="date" value="" formControlName="cargadate" >
+        </div>
+      
+      </div>
+
+
+      <div class="form-row">
+          
+        <div class="form-group col-md-6">
+          <label for="inputCity">Producto </label>
+          <select class="form-control inputs" formControlName="product">
+            <option> ASFALTO AC-5 </option>
+            <option> EKBE SUPERPAVE PG 64-22 </option>          
+            <option> ASFALTO EM RAPIDA VISCOSIDAD INTER (AC-20) ECR-65 </option>
+            <option> EM SUPERESTABLE (AC-20) RL-3K </option>
+            <option> ASFALTO AC-20-I </option>
+            <option> ASFALTO STY 76-22 RMO </option> 
+            <option> ASFALTO N-FLEX. CLASIF. PG 70-22 </option> 
+            <option> ASFALTO PG 76-22 MODIFICADO </option> 
+            <option> ASFALTO MODIFICADO STY 82-22 </option> 
+            <option> ASFALTO STY B1-RM </option> 
+            <option> ASFALTO STY B2-RM </option> 
+          </select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputCity"> Cantidad (Toneladas) </label>
+          <select class="form-control inputs" formControlName="cantidad">
+            <option> 33 </option>
+            <option> 37 </option>
+            <option> 45 </option>
+            <option> 54 </option>
+          </select>
+        </div>
+
+      </div>      
+      <button type="submit" [disabled]="asfaltform.invalid" class="btn btn-danger col-md-6 offset-md-3" > Realizar Pedido</button>
+    </form>
+
+
+    
+    <!-- Aqui se termina la creacion del pedido-->
+</div>
